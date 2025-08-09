@@ -1,20 +1,20 @@
 [
   {
-    "id":"song1",
-    "title":"サンプル曲 - ネガイ星",
+    "id":"s1",
+    "title":"ネガイ星",
     "artist":"Xerox",
     "category":"single",
     "tags":["初音ミク","エレクトロ"],
     "videoId":"VIDEO_ID_HERE",
     "cover":"assets/cover-negaiboshi.jpg",
-    "lyrics":"これはサンプルの歌詞です。\n繰り返し..."
+    "lyrics":"これはサンプル歌詞です。\n忘れないでね..."
   },
   {
-    "id":"song2",
-    "title":"インスト曲サンプル",
+    "id":"s2",
+    "title":"インストサンプル",
     "artist":"Xerox",
     "category":"inst",
-    "tags":["インスト"],
+    "tags":["inst"],
     "videoId":"",
     "cover":"assets/cover-inst.jpg",
     "lyrics":""
