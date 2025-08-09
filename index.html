@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Xerox — Official</title>
+<link rel="stylesheet" href="styles.css">
+<meta name="description" content="Xerox — Vocaloid producer. Official site.">
+</head>
+<body>
+  <nav class="nav">
+    <a class="logo" href="/">Xerox</a>
+    <div class="nav-links">
+      <a href="#works">作品</a>
+      <a href="#blog">制作日記</a>
+      <a href="#profile">プロフィール</a>
+      <a id="contact-link" href="https://docs.google.com/forms/d/YOUR_FORM_ID" target="_blank">お問い合わせ</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-left">
+      <img id="hero-art" src="assets/hero-placeholder.jpg" alt="Xerox cover" />
+    </div>
+    <div class="hero-right">
+      <h1 id="site-title">Xerox</h1>
+      <p id="site-sub">Vocaloid producer / ボカロP — 新曲・制作日記を公開</p>
+
+      <div class="stats-row">
+        <div class="stat-card">
+          <div class="stat-num" id="yt-subs">--</div>
+          <div class="stat-label">YouTube</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num" id="sns-total">--</div>
+          <div class="stat-label">SNS 合計</div>
+        </div>
+      </div>
+
+      <div class="action-row">
+        <a id="yt-btn" class="btn" href="https://youtube.com/@xerox-main" target="_blank">YouTube</a>
+        <a class="btn ghost" id="follow-btn" href="#works">作品を聴く</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="main container">
+    <!-- 検索 -->
+    <section id="search-panel" class="card">
+      <div class="search-row">
+        <input id="search-input" placeholder="曲名・歌詞の一部・タグで検索…" />
+        <button id="search-btn" class="btn">検索</button>
+      </div>
+      <div id="search-hint" class="muted">例：「ネガイ星」「初音ミク」「BPM=120」</div>
+    </section>
+
+    <!-- 作品セクション -->
+    <section id="works" class="card">
+      <h2>作品</h2>
+      <div class="filters">
+        <select id="filter-category"><option value="all">すべて</option><option value="single">Single</option><option value="remix">Remix</option><option value="inst">Instrumental</option></select>
+        <button id="play-category" class="btn">カテゴリを連続再生</button>
+      </div>
+      <div id="works-list" class="grid"></div>
+    </section>
+
+    <!-- ブログ -->
+    <section id="blog" class="card">
+      <h2>制作日記</h2>
+      <div id="posts-list"></div>
+    </section>
+
+    <!-- プロフィール -->
+    <section id="profile" class="card">
+      <h2>プロフィール</h2>
+      <div id="profile-content">
+        <p>ボカロP Xerox。ジャンル：エレクトロ・ポップ／ダンサブル。使用ボカロ：初音ミク等。</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- 歌詞モーダル -->
+  <div id="lyrics-modal" class="modal hidden">
+    <div class="modal-inner">
+      <button id="close-lyrics" class="btn ghost">閉じる</button>
+      <h3 id="lyrics-title">歌詞</h3>
+      <pre id="lyrics-content"></pre>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div>© <span id="year"></span> Xerox</div>
+    <div class="social">
+      <a href="https://youtube.com/@xerox-main" target="_blank">YouTube</a> ·
+      <a href="#" target="_blank">TikTok</a> ·
+      <a href="#" target="_blank">X</a> ·
+      <a href="#" target="_blank">SoundCloud</a>
+    </div>
+  </footer>
+
+<script src="scripts.js"></script>
+</body>
+</html>
