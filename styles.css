@@ -1,40 +1,73 @@
+/* styles.css - neon + dark + modern */
 :root{
-  --bg:#08080a;
-  --card:#0f1216;
-  --muted:#98a0b0;
-  --accent-1: linear-gradient(90deg,#00f0ff,#d03aff);
+  --bg:#05060a;
+  --card:#0e1116;
+  --muted:#9aa5b3;
+  --neon1:#00f7ff;
+  --neon2:#a855f7;
+  --accent:#ff3da6;
+  --glass: rgba(255,255,255,0.04);
+  font-family: "Noto Sans JP", Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
 }
+/* responsive root font using Python-calculated clamp */
+html{font-size: clamp(12px, calc(8.87px + 0.8696vw), 20px); -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:#eaf0ff;font-family:"Noto Sans JP",sans-serif;font-size:16px}
-a{color:inherit;text-decoration:none}
-.container{max-width:1200px;margin:20px auto;display:grid;grid-template-columns:1fr;gap:20px;padding:0 16px}
-.nav{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;background:rgba(255,255,255,0.01);backdrop-filter: blur(3px)}
-.logo{font-weight:700;letter-spacing:1px}
-.nav-links a{margin-left:12px}
-.hero{display:flex;gap:20px;align-items:center;padding:28px;background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent)}
-.hero-left img{width:220px;height:220px;border-radius:12px;object-fit:cover;border:2px solid rgba(255,255,255,0.04)}
+body{margin:0;background:linear-gradient(180deg,#05060a 0%, #04040a 100%); color:#eaf2ff;}
+
+/* particles layer */
+.particles-bg{position:fixed;inset:0;z-index:0;pointer-events:none}
+
+/* nav */
+.nav{position:sticky;top:0;display:flex;justify-content:space-between;align-items:center;padding:14px 20px;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);backdrop-filter: blur(6px);z-index:10}
+.logo{font-weight:800;letter-spacing:1px;color:white}
+.tagline{margin-left:12px;color:var(--muted);font-size:0.9rem}
+.nav-right a{margin-left:14px;color:var(--muted);text-decoration:none}
+.nav-right a:hover{color:var(--neon1);text-shadow:0 0 10px rgba(0,247,255,0.14)}
+
+/* hero */
+.hero{display:flex;gap:22px;align-items:center;padding:36px;position:relative;z-index:5}
+.hero-left img{width:260px;height:260px;border-radius:14px;object-fit:cover;border:2px solid rgba(255,255,255,0.05);box-shadow:0 10px 30px rgba(0,0,0,0.6)}
 .hero-right{flex:1}
-#site-title{font-size:2.2rem;margin:0}
-.stat-row,.stats-row{display:flex;gap:12px;margin-top:14px}
-.stat-card{background:var(--card);padding:8px 12px;border-radius:10px;text-align:center;min-width:96px}
-.stat-num{font-weight:700;font-size:1.1rem}
-.action-row{margin-top:14px}
-.btn{display:inline-block;padding:10px 14px;border-radius:10px;background:transparent;border:1px solid rgba(255,255,255,0.06);cursor:pointer}
-.btn.ghost{border-style:dashed}
-.card{background:var(--card);padding:16px;border-radius:12px}
+#site-title{font-family: 'Orbitron', sans-serif;font-size:1.9rem;margin:0;background: linear-gradient(90deg,var(--neon1),var(--neon2)); -webkit-background-clip:text; color:transparent}
+.lead{color:var(--muted);margin-top:6px}
+.kpi-row{display:flex;gap:14px;margin-top:14px}
+.kpi-card{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:10px 14px;border-radius:10px;min-width:110px; text-align:left}
+.kpi-number{font-weight:800;font-size:1.2rem; color: white; text-shadow:0 0 18px rgba(168,85,247,0.12)}
+.kpi-label{font-size:0.85rem;color:var(--muted)}
+.cta-row{margin-top:16px}
+.btn{padding:10px 14px;border-radius:10px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:inherit;cursor:pointer;text-decoration:none}
+.btn.primary{background:linear-gradient(90deg,var(--neon1),var(--neon2));color:#051018; font-weight:700; box-shadow: 0 8px 30px rgba(168,85,247,0.08)}
+.btn.outline{border:1px solid rgba(255,255,255,0.06);}
+
+/* container + cards */
+.container{max-width:1200px;margin:24px auto;display:grid;grid-template-columns:1fr;gap:18px;padding:0 18px;position:relative;z-index:5}
+.card{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:16px;border-radius:12px}
+
+/* featured */
+.featured-box{display:flex;align-items:center;gap:16px;padding:12px;border-radius:10px;background:linear-gradient(90deg, rgba(0,247,255,0.04), rgba(168,85,247,0.04));}
+
+/* works grid */
+.section-head{display:flex;justify-content:space-between;align-items:center}
+.controls{display:flex;gap:8px;align-items:center}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-top:12px}
-.work-item{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:8px;border-radius:8px}
-.work-thumb{width:100%;height:120px;object-fit:cover;border-radius:6px}
-.muted{color:var(--muted);font-size:0.9rem}
-.footer{padding:20px;text-align:center;color:var(--muted);font-size:0.9rem;border-top:1px solid rgba(255,255,255,0.02);margin-top:30px}
+.work-item{border-radius:10px;padding:10px;background:linear-gradient(180deg, rgba(0,0,0,0.14), transparent);box-shadow:0 6px 18px rgba(0,0,0,0.6)}
+.work-thumb{width:100%;height:120px;object-fit:cover;border-radius:8px;display:block}
+.work-title{font-weight:700;margin:8px 0 4px}
+.badge{display:inline-block;padding:4px 8px;border-radius:999px;font-size:0.8rem;background:rgba(255,255,255,0.03);color:var(--muted)}
+
+/* news */
+.footer{padding:20px;text-align:center;color:var(--muted);font-size:0.9rem;margin-top:30px;border-top:1px solid rgba(255,255,255,0.02);z-index:5}
+
+/* modal */
 .modal{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.6)}
-.modal.hidden{display:none}
-.modal-inner{background:var(--card);padding:18px;border-radius:10px;max-width:720px;width:90%}
+.hidden{display:none}
+
 @media(min-width:1000px){
-  .container{grid-template-columns:1fr 360px}
+  .container{grid-template-columns: 1fr 360px}
   .main{grid-column:1/2}
 }
-@media(max-width:600px){
-  #site-title{font-size:1.6rem}
-  .hero-left img{width:120px;height:120px}
+
+@media(max-width:700px){
+  .hero{flex-direction:column;align-items:flex-start}
+  .hero-left img{width:160px;height:160px}
 }
