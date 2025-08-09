@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ja">
+<head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Admin — Xerox</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="container">
+    <section class="card">
+      <h2>記事編集（簡易）</h2>
+      <label>タイトル<input id="a-title"></label>
+      <label>抜粋<input id="a-excerpt"></label>
+      <label>本文<textarea id="a-content" rows="8"></textarea></label>
+      <div style="margin-top:10px">
+        <button id="add-btn" class="btn">記事を追加</button>
+        <button id="download-btn" class="btn ghost">Download JSON</button>
+      </div>
+      <div id="list" style="margin-top:12px"></div>
+      <p class="muted">※ 現在の仕組み：このページで生成した JSON をダウンロードして GitHub リポジトリの <code>data/posts.json</code> に上書きしてください。公開は GitHub Pages の自動デプロイで行われます。</p>
+    </section>
+  </main>
+
+<script>
+let posts = [];
+async function load(){
+  try{
+    const r = await fetch('data/posts.json');
+    posts = await r.json();
+    render();
+  }catch(e){ posts = []; render(); }
+}
+function render(){
+  const dom = document.getElementById('list');
+  dom.innerHTML = posts.map(p => `<div class="card"><strong>${p.title}</strong> <div class="muted">${p.publishedAt||''}</div><p>${p.excerpt||''}</p></div>`).join('');
+}
+document.getElementById('add-btn').addEventListener('click', ()=>{
+  const t = document.getElementById('a-title').value.trim();
+  if(!t) return alert('タイトル入れて');
+  const e = document.getElementById('a-excerpt').value.trim();
+  const c = document.getElementById('a-content').value.trim();
+  const id = 'post'+Date.now().toString(36);
+  posts.unshift({id,title:t,excerpt:e,content:c,publishedAt:new Date().toISOString()});
+  render();
+});
+document.getElementById('download-btn').addEventListener('click', ()=>{
+  const blob = new Blob([JSON.stringify(posts,null,2)],{type:'application/json'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = 'posts.json'; a.click();
+  URL.revokeObjectURL(url);
+});
+load();
+</script>
+</body>
+</html>
